@@ -7,7 +7,7 @@ module.exports = {
     extend: 
     {
       fontFamily : {"inter": ["Inter","serif"]},
-      colors: {default_text:"#faf7fc"}
+      colors: {default_text:"#ffffff"}
     }
   },
   plugins: [],
