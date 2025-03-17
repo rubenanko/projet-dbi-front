@@ -1,0 +1,16 @@
+:icons: font
+
+= informations utiles
+
+== documentation des technos
+
+* react : https://react.dev/reference/react
+* tailwind : https://tailwindcss.com/docs/installation/using-vite
+* axios : https://axios-http.com/docs/api_intro
+
+NOTE: Mon projet JEE contient des exemples utiles : https://dev.azure.com/ryanbouchou0183/TheCubingPlace/_git/TCPFrontEnd
+
+== ressources utiles
+
+* templates CSS tailwind : https://flowbite.com/docs/getting-started/introduction/
+* icones : https://heroicons.com/outline
