@@ -1,11 +1,12 @@
-import Test from "../components/Test.jsx"
+import Footer from "../components/Footer";
 
 function HomePage()
 {
     return (
-    <div>
-        <Test argument="Hello World"/>
-    </div>);
+        <>
+            <Footer />
+        </>
+    )
 }
 
 export default HomePage;
