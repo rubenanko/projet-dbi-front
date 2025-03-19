@@ -1,25 +1,39 @@
+import React, { useState } from 'react';
+
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    event.preventDefault(); // Empêche de remonter la page quand on ouvre le menu défilant
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header>
-        
+      <nav className="bg-cyan-500 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div className="flex flex-wrap items-center justify-between mx-auto p-6">
+          {/* Logo 3 traits de navigation */}
+          <a href="#" onClick={toggleMenu} className="flex items-center space-x-3 rtl:space-x-reverse">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="White" className="size-9">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </a>
 
-<nav class=" bg-cyan-500 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-  <div class="flex flex-wrap items-center justify-between mx-auto p-5">
-
-    {/* Logo 3 traits de navigation*/}
-  <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="White" className="size-9">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-</svg>
-    </a>
-
+          {/* Menu déroulant */}
+          <div className={`absolute left-0 min-h-screen h-full top-24 w-1/6 bg-cyan-500 shadow-lg rounded-lg p-5 z-30 transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <ul>
+              <li><a href="#" className="block px-4 py-2 text-white hover:bg-cyan-400">S'inscrire</a></li>
+              <li><a href="#" className="block px-4 py-2 text-white hover:bg-cyan-400">Se connecter</a></li>
+              <li><a href="#" className="block px-4 bottom-0 py-2 text-white hover:bg-cyan-400">Contacts</a></li>
+            </ul>
+          </div>
 
 {/* tableau de logo home et profil*/}
     
   <div class="absolute left-24" id="navbar-sticky">
     <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
       <li>
-        <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="White" className="size-10">
+        <a href="/home" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="White" className="size-10">
   <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
 </svg>
 </a>
@@ -34,8 +48,9 @@ function Header() {
   </div>
 
   {/* Nom de l'app*/}
-    <div>
+    <div><a href="/home" >
     <span class="text-4xl font-semibold font-coiny text-white">Lawrning</span>
+    </a>
     </div>
   
  {/* bouton se connecter*/}
