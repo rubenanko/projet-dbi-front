@@ -1,9 +1,11 @@
+import FormatedText from "./FormatedText";
 
-
-function QuestionZone()
+function QuestionZone({question})
 {
     return(
-        <p className="py-5 text-xl">{"test test"}</p>
+        <div>
+            <FormatedText textContent={question} className="py-5 place-self-center m-5 text-2xl text-left w-2/3"/>
+        </div>
     );
 }
 
