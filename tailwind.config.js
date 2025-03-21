@@ -4,11 +4,15 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: 
-    {
-      fontFamily : {"inter": ["Inter","serif"]},
-      colors: {default_text:"#ffffff"}
-    }
+    extend: {
+      fontFamily: {
+        inter: ["Inter", "serif"],
+        coiny: ['Coiny', 'system-ui'],
+      },
+      colors: {
+        default_text: "#ffffff",
+      },
+    },
   },
   plugins: [],
 }
