@@ -2,6 +2,12 @@
 
 = informations utiles
 
+== Lancer avec le backend
+
+----
+npx vite --host
+----
+
 == documentation des technos
 
 * react : https://react.dev/reference/react
