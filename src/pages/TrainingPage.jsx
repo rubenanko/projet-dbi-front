@@ -12,10 +12,11 @@ function TrainingPage({topic})
     const [data, setData] = useState(null); // Pour stocker la réponse du backend
     const [loading, setLoading] = useState(true); // Indique le chargement
     const [error, setError] = useState(null); // Stocke une erreur éventuelle
+    const [progress, setProgress] = useState(0); // Pourcentage de chargement
 
     var returned;
 
-    useEffect(() => {
+     useEffect(() => {
         // Fonction pour appeler l'API
         const fetchData = async () => {
           try {
@@ -32,18 +33,41 @@ function TrainingPage({topic})
         fetchData();
     }, []);
 
+    useEffect(() => {
+        if (loading) {
+            const interval = setInterval(() => {
+                setProgress((prev) => {
+                    if (prev < 95) {
+                        return prev + 0.1;
+                    } else {
+                        clearInterval(interval);
+                        return prev;
+                    }
+                });
+            }, 5); // Augmente le pourcentage toutes les 100ms
+        }
+    }, [loading]);
+
     if(loading)
-    {
-        returned = <p>chargement</p>
+      {
+        returned = (
+            <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700 relative">
+                <div
+                    className="bg-blue-600 animate-pulse h-10 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full duration-1000"
+                    style={{ width: `${Math.round(progress)}%` }}
+                >
+                </div>
+            </div>
+        );
     }
 
     if(error) { returned = <p>Erreur</p>}
 
-    if(data)
+    if(data)  // mettre data à la place pour taffer sur la barre de chargement  true sinon
     {
         returned = 
         <>
-            <QuestionZone question={data.assistant} />
+            <QuestionZone question={"miozjhcvbzdhibvihzervbcihzdbvcihzerabcvihzebcvhizerbcihzerhizrbvchizrebvcz yhbhzerbvczihebdbhizvehibvzevebzhimvmrhvzBHIBVZHZbvhi"} />  {/*mettre data.assistant*/}
             <InputZone />
         </>;
     }
