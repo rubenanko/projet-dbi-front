@@ -5,6 +5,7 @@ import InputZone from "../components/InputZone";
 import QuestionZone from "../components/QuestionZone";
 import Header from "../components/Header";
 import LoadingBar from "../components/LoadingBar";
+import CorrectionZone from "../components/CorrectionZone";
 
 function TrainingPage({topic})
 {
@@ -17,7 +18,12 @@ function TrainingPage({topic})
     const [error, setError] = useState(null); // Stocke une erreur éventuelle
     const [progress, setProgress] = useState(0); // Pourcentage de chargement
 
+    const [correction, setCorrection] = useState(null); // Pour stocker la réponse du backend
+    const [correctionLoading, setCorrectionLoading] = useState(false); // Indique le chargement
+    const [correctionError, setCorrectionError] = useState(null); // Stocke une erreur éventuelle
+
     var returned;
+    var correctionZone;
 
      useEffect(() => {
         // Fonction pour appeler l'API
@@ -72,17 +78,24 @@ function TrainingPage({topic})
 
     if(data)  // mettre data à la place pour taffer sur la barre de chargement  true sinon
     {
+        if(correctionLoading)
+        {
+          correctionZone = <p>Loading Correction</p>;
+        }
+
+        if(correction)
+          correctionZone = <CorrectionZone correction={correction.assistant}/>;
+
         returned = 
         <>
-        <div className="p-4"><Header/></div>
-        <div className="flex flex-col items-center justify-center flex-grow m-12">
-        <div className="flex justify-center items-center w-full">
-        <QuestionZone question={data.assistant} />  {/*mettre data.assistant*/}
-        </div>
-            
-        <InputZone />
-        </div>
-        
+          <div className="p-4"><Header/></div>
+            <div className="flex flex-col items-center justify-center flex-grow m-12">
+              <div className="flex justify-center items-center w-full">
+                <QuestionZone question={data.assistant} />  {/*mettre data.assistant*/}
+              </div>
+              <InputZone question={data.assistant} setCorrection={setCorrection} setCorrectionLoading={setCorrectionLoading} setCorrectionError={setCorrectionError}/>
+              {correctionZone}
+            </div>
         </>;
     }
 

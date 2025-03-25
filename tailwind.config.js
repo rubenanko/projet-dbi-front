@@ -6,7 +6,10 @@ module.exports = {
   theme: {
     extend: 
     {
-      fontFamily : {"inter": ["Inter","serif"]},
+      fontFamily: {
+        inter: ["Inter", "serif"],
+        coiny: ['Coiny', 'system-ui'],
+      },
       colors: {default_text:"#ffffff"},
       maxHeight: {
         '128': '32rem', // 512px
