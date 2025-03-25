@@ -56,30 +56,40 @@ function TrainingPage({topic})
         returned = (<>
             <div><Header/></div>
             <div className="flex justify-center items-center h-screen"><LoadingBar progress={progress} /></div>
+           
+            <div className="flex flex-col min-h-max">
+            <div className="flex-grow">
+                {returned}
+            </div>
+            <Footer />
+        </div>
             </>
         );
     }
 
     if(error) { returned = <p>Erreur</p>}
 
-    if(true)  // mettre data à la place pour taffer sur la barre de chargement  true sinon
+    if(data)  // mettre data à la place pour taffer sur la barre de chargement  true sinon
     {
         returned = 
         <>
-        <div className="p-8"><Header/></div>
-            <div className="flex flex-col items-center justify-center flex-grow m-10">
-            <QuestionZone question={"miozjhcvbzdhibvihzervbcihzdbvcihzerabcvihzebcvhizerbcihzerhizrbvchizrebvcz yhbhzerbvczihebdbhizvehibvzevebzhimvmrhvzBHIBVZHZbvhi"} />  {/*mettre data.assistant*/}
-            <InputZone />
-            </div>
+        <div className="p-4"><Header/></div>
+        <div className="flex flex-col items-center justify-center flex-grow m-10">
+        <div className="flex justify-center items-center w-full">
+        <QuestionZone question={data.assistant} />  {/*mettre data.assistant*/}
+        </div>
+            
+        <InputZone />
+        </div>
+        
         </>;
     }
 
     return(
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-max">
             <div className="flex-grow">
                 {returned}
             </div>
-            <Footer />
         </div>
     );
 }

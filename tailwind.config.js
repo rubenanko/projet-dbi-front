@@ -7,7 +7,12 @@ module.exports = {
     extend: 
     {
       fontFamily : {"inter": ["Inter","serif"]},
-      colors: {default_text:"#ffffff"}
+      colors: {default_text:"#ffffff"},
+      maxHeight: {
+        '128': '32rem', // 512px
+        '160': '40rem', // 640px
+        // Add more custom values as needed
+      }
     }
   },
   plugins: [],
