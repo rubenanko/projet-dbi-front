@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Boxtrain from "../components/Boxtrain";
 import Boxworld from "../components/Boxworld";
@@ -20,10 +20,9 @@ function HomePage() {
       <div className="mt-20"> {/* Ajout de marge en haut */}
         <BoxGraph />
       </div>
-      <div className="mt-20"> {/* Ajout de marge en haut */}
+      <div className="my-20"> {/* Ajout de marge en haut */}
         <Boxworld />
       </div>
-      <Footer />
     </>
   );
 }

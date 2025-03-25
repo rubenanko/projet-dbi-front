@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useState,useEffect} from 'react';
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import InputZone from "../components/InputZone";
 import QuestionZone from "../components/QuestionZone";
 import Header from "../components/Header";
@@ -9,7 +9,6 @@ import CorrectionZone from "../components/CorrectionZone";
 
 function TrainingPage({topic})
 {
-    document.body.style.overflow = "hidden";
     if(!topic)
         topic = "default";
 
@@ -36,6 +35,7 @@ function TrainingPage({topic})
             setError(err.message); // Sauvegarde l'erreur
           } finally {
             setLoading(false); // Fin du chargement, qu'il y ait eu une erreur ou non
+            setProgress(0);
           }
         };
         
@@ -44,7 +44,7 @@ function TrainingPage({topic})
 
     //Remplissage de la barre de chargement
     useEffect(() => {
-        if (loading) {
+        if (loading || correctionLoading) {
             const interval = setInterval(() => {
                 setProgress((prev) => {
                     if (prev < 95) {
@@ -56,7 +56,7 @@ function TrainingPage({topic})
                 });
             }, 5); // Augmente le pourcentage toutes les 100ms
         }
-    }, [loading]);
+    }, [loading || correctionLoading]);
 
     if(loading)
       {
@@ -68,7 +68,6 @@ function TrainingPage({topic})
             <div className="flex-grow">
                 {returned}
             </div>
-            <Footer />
         </div>
             </>
         );
@@ -80,7 +79,8 @@ function TrainingPage({topic})
     {
         if(correctionLoading)
         {
-          correctionZone = <p>Loading Correction</p>;
+          correctionZone = <div className="flex justify-center items-center h-screen w-full"><LoadingBar progress={progress} /></div>
+
         }
 
         if(correction)

@@ -4,3 +4,33 @@
   padding: 2rem;
   text-align: center;
 }
+
+.scrollbar1::-webkit-scrollbar{
+  width: 10px;
+}
+
+.scrollbar1::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.scrollbar1::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #00b8db;
+}
+
+.scrollbar2::-webkit-scrollbar{
+  width: 10px;
+}
+
+.scrollbar2::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: inherit;
+  border: 1px solid inherit;
+}
+
+.scrollbar2::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #00b8db;
+}
