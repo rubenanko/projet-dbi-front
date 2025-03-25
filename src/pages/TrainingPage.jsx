@@ -3,6 +3,8 @@ import {useState,useEffect} from 'react';
 import Footer from "../components/Footer";
 import InputZone from "../components/InputZone";
 import QuestionZone from "../components/QuestionZone";
+import Header from "../components/Header";
+import LoadingBar from "../components/LoadingBar";
 
 function TrainingPage({topic})
 {
@@ -33,6 +35,7 @@ function TrainingPage({topic})
         fetchData();
     }, []);
 
+    //Remplissage de la barre de chargement
     useEffect(() => {
         if (loading) {
             const interval = setInterval(() => {
@@ -50,33 +53,34 @@ function TrainingPage({topic})
 
     if(loading)
       {
-        returned = (
-            <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700 relative">
-                <div
-                    className="bg-blue-600 animate-pulse h-10 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full duration-1000"
-                    style={{ width: `${Math.round(progress)}%` }}
-                >
-                </div>
-            </div>
+        returned = (<>
+            <div><Header/></div>
+            <div className="flex justify-center items-center h-screen"><LoadingBar progress={progress} /></div>
+            </>
         );
     }
 
     if(error) { returned = <p>Erreur</p>}
 
-    if(data)  // mettre data à la place pour taffer sur la barre de chargement  true sinon
+    if(true)  // mettre data à la place pour taffer sur la barre de chargement  true sinon
     {
         returned = 
         <>
+        <div className="p-8"><Header/></div>
+            <div className="flex flex-col items-center justify-center flex-grow m-10">
             <QuestionZone question={"miozjhcvbzdhibvihzervbcihzdbvcihzerabcvihzebcvhizerbcihzerhizrbvchizrebvcz yhbhzerbvczihebdbhizvehibvzevebzhimvmrhvzBHIBVZHZbvhi"} />  {/*mettre data.assistant*/}
             <InputZone />
+            </div>
         </>;
     }
 
     return(
-        <>
-            {returned}
+        <div className="flex flex-col min-h-screen">
+            <div className="flex-grow">
+                {returned}
+            </div>
             <Footer />
-        </>
+        </div>
     );
 }
 
