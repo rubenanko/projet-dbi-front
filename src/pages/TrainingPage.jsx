@@ -8,6 +8,7 @@ import LoadingBar from "../components/LoadingBar";
 
 function TrainingPage({topic})
 {
+    document.body.style.overflow = "hidden";
     if(!topic)
         topic = "default";
 
@@ -74,7 +75,7 @@ function TrainingPage({topic})
         returned = 
         <>
         <div className="p-4"><Header/></div>
-        <div className="flex flex-col items-center justify-center flex-grow m-10">
+        <div className="flex flex-col items-center justify-center flex-grow m-12">
         <div className="flex justify-center items-center w-full">
         <QuestionZone question={data.assistant} />  {/*mettre data.assistant*/}
         </div>
