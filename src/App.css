@@ -11,8 +11,8 @@
 
 .scrollbar1::-webkit-scrollbar-track {
   border-radius: 8px;
-  background-color: #ffffff;
-  border: 1px solid #ffffff;
+  background-color: inherit;
+  border: 1px solid inherit;
 }
 
 .scrollbar1::-webkit-scrollbar-thumb {
@@ -31,6 +31,11 @@
 }
 
 .scrollbar2::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background-color: #00b8db;
+  border-radius: 0px;
+  background-color: #fff085;
+}
+
+ol {
+  list-style: decimal;
+  padding-left: 2rem;
 }

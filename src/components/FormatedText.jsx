@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown";
+
 
 function FormatedText({textContent,className})
 {
@@ -11,7 +13,7 @@ function FormatedText({textContent,className})
     
     for(var line of splitedText)
     {
-        content.push(line);
+        content.push(<ReactMarkdown>{line}</ReactMarkdown>);
         content.push(<br />);
     }
     return (

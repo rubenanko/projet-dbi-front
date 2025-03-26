@@ -17,6 +17,8 @@ function TrainingPage({topic})
     const [error, setError] = useState(null); // Stocke une erreur éventuelle
     const [progress, setProgress] = useState(0); // Pourcentage de chargement
 
+    const [showButton, setShowButton] = useState(true); // affichage du bouton
+
     const [correction, setCorrection] = useState(null); // Pour stocker la réponse du backend
     const [correctionLoading, setCorrectionLoading] = useState(false); // Indique le chargement
     const [correctionError, setCorrectionError] = useState(null); // Stocke une erreur éventuelle
@@ -84,7 +86,9 @@ function TrainingPage({topic})
         }
 
         if(correction)
+        {
           correctionZone = <CorrectionZone correction={correction.assistant}/>;
+        }
 
         returned = 
         <>
@@ -93,7 +97,7 @@ function TrainingPage({topic})
               <div className="flex justify-center items-center w-full">
                 <QuestionZone question={data.assistant} />  {/*mettre data.assistant*/}
               </div>
-              <InputZone question={data.assistant} setCorrection={setCorrection} setCorrectionLoading={setCorrectionLoading} setCorrectionError={setCorrectionError}/>
+              <InputZone question={data.assistant} setCorrection={setCorrection} setCorrectionLoading={setCorrectionLoading} setCorrectionError={setCorrectionError} showButton={showButton} setShowButton={setShowButton} />
               {correctionZone}
             </div>
         </>;
